@@ -4,4 +4,4 @@
 
 - include: spin-off-ec2-instances.yml
 - include: install-consul.yml
-- include: terminate-ec2-instances.yml
+# - include: terminate-ec2-instances.yml

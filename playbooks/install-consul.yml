@@ -19,7 +19,9 @@
   - name: Make sure consul agent is not running
     service: name=consul state=stopped enabled=false
 
-  - name: Install dnsmasq
-  # Handle *.consul DNS names locally via consul embedded DNS service
-  # forward the rest of the names to proper DNS server
-    apt: name=dnsmasq
+  - include: ../tasks/dnsmasq.yml
+    vars:
+      consul_domain: susumu.
+
+  handlers:
+    - include: ../handlers/dnsmasq.yml
