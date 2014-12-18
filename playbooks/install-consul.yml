@@ -21,7 +21,7 @@
 
   - include: ../tasks/dnsmasq.yml
     vars:
-      consul_domain: susumu.
+      consul_domain: consul.
 
   handlers:
     - include: ../handlers/dnsmasq.yml

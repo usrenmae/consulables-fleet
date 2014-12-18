@@ -1,0 +1,19 @@
+{
+  "bootstrap_expect": {{ consul_server_instances_count }},
+  "data_dir": "/var/lib/consul",
+  "server": true,
+  "datacenter": "eu-west-1",
+  "log_level": "debug",
+  "encrypt": "{{ consul_encrypt_key }}",
+  "enable_syslog": true,
+  "addresses": {
+    "dns": "127.0.0.1"
+  },
+  "disable_update_check": true,
+  "domain": "{{ consul_domain_suffix }}",
+  "join": [
+    "{{ hostvars[groups['ec2'][0]]['ansible_eth0']['ipv4']['address'] }}",
+    "{{ hostvars[groups['ec2'][1]]['ansible_eth0']['ipv4']['address'] }}",
+    "{{ hostvars[groups['ec2'][2]]['ansible_eth0']['ipv4']['address'] }}"
+  ]
+}

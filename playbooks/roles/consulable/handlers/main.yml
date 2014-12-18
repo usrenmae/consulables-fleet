@@ -1,0 +1,10 @@
+---
+
+- name: restart consul
+  command: "{{ item }}"
+  with_items:
+    - stop consul
+    - start consul
+
+- name: restart dnsmasq
+  service: name=dnsmasq state=started

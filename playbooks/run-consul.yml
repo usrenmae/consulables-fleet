@@ -1,0 +1,9 @@
+---
+
+- name: Run consul agents
+  hosts: ec2
+  sudo: true
+  user: ubuntu
+
+  roles:
+    - consulable

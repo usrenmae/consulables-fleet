@@ -1,0 +1,9 @@
+---
+
+- name: Configuration file for consul agent
+  template: |
+        src=consul-agent-conf.json.j2
+        dest=/etc/consul.d/20-agent.json
+  notify: 
+    - restart consul
+    - restart dnsmasq

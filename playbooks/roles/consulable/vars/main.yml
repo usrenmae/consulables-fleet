@@ -1,0 +1,4 @@
+---
+consul_server_instances_count: "{{ total_instances_count | default(3) }}"
+consul_encrypt_key: uqq2x4vajkszxdd5yttvha==
+consul_domain_suffix: susumu.
