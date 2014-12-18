@@ -2,17 +2,24 @@
 
 # This one is run against base AMI image with Packer for example 
 - name: Add consul deb repository
-  hosts: ec2
-  remote_user: ubuntu
+  hosts: ec2hosts
   sudo: true
 
   tasks:
 
-  - apt_repository: repo='ppa:bcandrea/consul'
-  - apt: name=consul
-  - apt: name=consul-web-ui
+  - name: Add consul deb repo
+    apt_repository: repo='ppa:bcandrea/consul'
 
-  - service: name=consul state=stopped enabled=false
+  - name: Install consul package
+    apt: name=consul
+
+  - name: Install consul user interface
+    apt: name=consul-web-ui
+
+  - name: Make sure consul agent is not running
+    service: name=consul state=stopped enabled=false
+
+  - name: Install dnsmasq
   # Handle *.consul DNS names locally via consul embedded DNS service
   # forward the rest of the names to proper DNS server
-  - apt: name=dnsmasq
+    apt: name=dnsmasq
