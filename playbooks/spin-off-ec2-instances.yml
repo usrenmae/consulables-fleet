@@ -15,17 +15,15 @@
          group_id: "{{ ec2_security_group_id }}"
          vpc_subnet_id: "{{ ec2_vpc_subnet_id }}"
 
-         count_tag:
-            Name: Consulable
-            consulable: "true"
-         instance_tags:
-            Name: Ansible multi instance rollout
+         count_tag: "{{ instance_tags | mandatory }}"
+         instance_tags: "{{ instance_tags | mandatory }}"
+
       register: ec2
 
-    - name: Add all instance public IPs to host group
-      add_host: hostname={{ item.public_dns_name }} groupname=ec2hosts
-      with_items: ec2.instances
+    # - name: Add all instance public IPs to host group
+    #   add_host: hostname={{ item.public_dns_name }} groupname=ec2hosts
+    #   with_items: ec2.instances
 
-    - name: Wait for SSH to come up
-      wait_for: host={{ item.public_dns_name }} port=22 delay=10 timeout=320 state=started
-      with_items: ec2.instances
+    # - name: Wait for SSH to come up
+    #   wait_for: host={{ item.public_dns_name }} port=22 delay=10 timeout=320 state=started
+    #   with_items: ec2.instances

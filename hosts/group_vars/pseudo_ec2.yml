@@ -4,4 +4,4 @@ ec2_region: eu-west-1
 ec2_security_group_id: sg-3d0c9858
 ec2_vpc_subnet_id: subnet-c427e1b3
 ec2_availability_zone: eu-west-1b
-total_instances_count: 1
+total_instances_count: 2

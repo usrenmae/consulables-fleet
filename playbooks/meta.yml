@@ -2,13 +2,23 @@
 # Meta playbook with multiple hosts defined, as the first playbook uses local+ec2 module
 # and builds a dynamic hosts group, than the second one uses this group to run scenarios on it
 
-# Spin off consul servers
-- include: spin-off-ec2-instances.yml total_instances_count=3
+# Spin off consul servers. 3 or 5
+- include: spin-off-ec2-instances.yml
+  vars:
+    total_instances_count: 3
+    instance_tags:
+      Name: Consulable
+      ConsulType: Server
 
 # Spin off consul clients
-- include: spin-off-ec2-instances.yml total_instances_count=1
+- include: spin-off-ec2-instances.yml
+  vars:
+    total_instances_count: 1
+    instance_tags:
+      Name: Consulable
+      ConsulType: Client
 
 - include: install-consul.yml
-- include: run-consul.yml
+# - include: run-consul.yml
 
 # - include: terminate-ec2-instances.yml
