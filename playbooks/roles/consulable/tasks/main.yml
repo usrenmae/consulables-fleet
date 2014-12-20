@@ -7,3 +7,13 @@
   notify: 
     - restart consul
     - restart dnsmasq
+
+# Restart consul to accept new configuration file before joining the cluster
+- meta: flush_handlers
+
+- name: Join consul cluster
+  command: "{{ item }}"
+  with_items:
+    - consul join {{ hostvars[play_hosts[0]]['ansible_eth0']['ipv4']['address'] }}
+    - consul join {{ hostvars[play_hosts[1]]['ansible_eth0']['ipv4']['address'] }}
+    - consul join {{ hostvars[play_hosts[2]]['ansible_eth0']['ipv4']['address'] }}

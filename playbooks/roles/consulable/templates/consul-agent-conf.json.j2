@@ -10,10 +10,11 @@
     "dns": "127.0.0.1"
   },
   "disable_update_check": true,
-  "domain": "{{ consul_domain_suffix }}",
+  "domain": "{{ consul_domain_suffix }}"{#,
   "join": [
-    "{{ hostvars[groups['ec2'][0]]['ansible_eth0']['ipv4']['address'] }}",
-    "{{ hostvars[groups['ec2'][1]]['ansible_eth0']['ipv4']['address'] }}",
-    "{{ hostvars[groups['ec2'][2]]['ansible_eth0']['ipv4']['address'] }}"
-  ]
+    "{{ hostvars[groups['ec2hosts'][0]]['ansible_eth0']['ipv4']['address'] }}",
+    "{{ hostvars[groups['ec2hosts'][1]]['ansible_eth0']['ipv4']['address'] }}",
+    "{{ hostvars[groups['ec2hosts'][2]]['ansible_eth0']['ipv4']['address'] }}"
+  ]#}
+
 }

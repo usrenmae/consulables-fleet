@@ -1,7 +1,7 @@
 ---
 
 - name: Run consul agents
-  hosts: ec2
+  hosts: ec2hosts
   sudo: true
   user: ubuntu
 
