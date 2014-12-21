@@ -1,20 +1,18 @@
 {
+  {% if inventory_hostname in play_hosts[:3] %}
   "bootstrap_expect": {{ consul_server_instances_count }},
-  "data_dir": "/var/lib/consul",
   "server": true,
-  "datacenter": "eu-west-1",
-  "log_level": "debug",
+  {% endif %}
+
+  "data_dir": "/var/lib/consul",
+  "datacenter": "{{ consul_datacenter }}",
+  "log_level": "INFO",
   "encrypt": "{{ consul_encrypt_key }}",
   "enable_syslog": true,
   "addresses": {
     "dns": "127.0.0.1"
   },
   "disable_update_check": true,
-  "domain": "{{ consul_domain_suffix }}"{#,
-  "join": [
-    "{{ hostvars[groups['ec2hosts'][0]]['ansible_eth0']['ipv4']['address'] }}",
-    "{{ hostvars[groups['ec2hosts'][1]]['ansible_eth0']['ipv4']['address'] }}",
-    "{{ hostvars[groups['ec2hosts'][2]]['ansible_eth0']['ipv4']['address'] }}"
-  ]#}
+  "domain": "{{ consul_domain_suffix }}"
 
 }
