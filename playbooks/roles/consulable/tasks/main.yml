@@ -1,5 +1,7 @@
 ---
 
+- include: install.yml
+
 - name: Configuration file for consul agent
   template: |
         src=consul-agent-conf.json.j2

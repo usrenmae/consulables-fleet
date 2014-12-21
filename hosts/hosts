@@ -5,7 +5,3 @@ localhost  ansible_connection=local
 localhost  ansible_connection=local
 
 [ec2hosts]
-# ec2-54-154-97-200.eu-west-1.compute.amazonaws.com
-# ec2-54-76-238-111.eu-west-1.compute.amazonaws.com
-# ec2-54-77-31-116.eu-west-1.compute.amazonaws.com
-# ec2-54-77-14-51.eu-west-1.compute.amazonaws.com

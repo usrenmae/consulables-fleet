@@ -1,0 +1,12 @@
+---
+
+- name: Add consul deb repo
+  apt_repository: repo='ppa:bcandrea/consul'
+
+- name: Install consul package
+  apt: name=consul
+
+- name: Install consul user interface
+  apt: name=consul-web-ui
+
+- include: dnsmasq.yml

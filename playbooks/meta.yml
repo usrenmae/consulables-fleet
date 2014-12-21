@@ -18,7 +18,6 @@
       Name: Consulable
       ConsulType: Client
 
-- include: install-consul.yml
 - include: run-consul.yml
 
 # - include: terminate-ec2-instances.yml

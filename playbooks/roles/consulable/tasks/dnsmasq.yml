@@ -5,12 +5,9 @@
 - name: Install dnsmasq
   apt: name=dnsmasq
 
-- name: And disable dnsmasq right away
-  service: name=dnsmasq state=stopped enabled=false
-
 - name: configure dnsmasq
   copy: >
-    content='server=/{{ consul_domain }}/127.0.0.1#8600'
+    content='server=/{{ consul_domain_suffix }}/127.0.0.1#8600'
     dest=/etc/dnsmasq.d/10-consul
   notify:
     - restart dnsmasq
